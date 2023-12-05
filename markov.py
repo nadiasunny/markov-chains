@@ -8,12 +8,11 @@ def open_and_read_file(file_path):
 
     Takes a string that is a file path, opens the file, and turns
     the file's contents as one string of text.
-    """
+    """    
+    f = open(file_path)
+    return f.read()
 
-    # your code goes here
-
-    return 'Contents of your file as one long string'
-
+print(open_and_read_file('green-eggs.txt'))
 
 def make_chains(text_string):
     """Take input text as string; return dictionary of Markov chains.
