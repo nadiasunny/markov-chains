@@ -12,7 +12,7 @@ def open_and_read_file(file_path):
     f = open(file_path)
     return f.read()
 
-print(open_and_read_file('green-eggs.txt'))
+
 
 def make_chains(text_string):
     """Take input text as string; return dictionary of Markov chains.
@@ -38,13 +38,27 @@ def make_chains(text_string):
         >>> chains[('there','juanita')]
         [None]
     """
-
+    text_string = text_string.split()
     chains = {}
+    bigram_tuples = []
 
+    for i in range(len(text_string)-2):
+        #Add bigrams to chains as keys
+        word1 = text_string[i]
+        word2 = text_string[i+1]
+        word3 = text_string[i+2]
+        
+        key = (word1, word2)
+        if key in chains:
+            chains[key].append(word3) 
+        else: 
+            chains[key] = [word3]
+        #chains[key] = (word1, word2, word3)
     # your code goes here
-
+    print(bigram_tuples)
     return chains
-
+text = open_and_read_file('green-eggs.txt')
+print(make_chains(text))
 
 def make_text(chains):
     """Return text from chains."""
