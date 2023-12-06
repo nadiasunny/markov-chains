@@ -40,7 +40,6 @@ def make_chains(text_string):
     """
     text_string = text_string.split()
     chains = {}
-    bigram_tuples = []
 
     for i in range(len(text_string)-2):
         #Add bigrams to chains as keys
@@ -78,20 +77,8 @@ def make_text(chains):
         else:
             break
         #add that new word to sentence
-    print(sentence)
-        
-    
-
-
-    #while we don't have a key error
-    # chains[random_link[1], following_word]
-    # print(sentence)
-    #print(random_link)
-    #print(type(random_link))
-    # your code goes here
-
+   
     return ' '.join(sentence)
-
 
 
 input_path = 'green-eggs.txt'
