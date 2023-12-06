@@ -49,25 +49,49 @@ def make_chains(text_string):
         word3 = text_string[i+2]
         
         key = (word1, word2)
+
         if key in chains:
             chains[key].append(word3) 
         else: 
             chains[key] = [word3]
         #chains[key] = (word1, word2, word3)
-    # your code goes here
-    print(bigram_tuples)
+    
     return chains
-text = open_and_read_file('green-eggs.txt')
-print(make_chains(text))
+
+
 
 def make_text(chains):
     """Return text from chains."""
+    
+    random_link = choice(list(chains.keys()))
+    following_word = choice(chains[random_link])
 
-    words = []
+    sentence = [random_link[0], random_link[1], following_word]
+    #current key is sentence[-2] and sentence[-1]
+    #while we don't have a key error
+    while True:
+    #use choice() to select the first word of the current key
+        bigram = (sentence[-2], sentence[-1])
+        if bigram in chains:
+            chosen = choice(chains[bigram])
+            sentence.append(chosen)
+        else:
+            break
+        #add that new word to sentence
+    print(sentence)
+        
+    
 
+
+    #while we don't have a key error
+    # chains[random_link[1], following_word]
+    # print(sentence)
+    #print(random_link)
+    #print(type(random_link))
     # your code goes here
 
-    return ' '.join(words)
+    return ' '.join(sentence)
+
 
 
 input_path = 'green-eggs.txt'
